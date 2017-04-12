@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  get 'tournaments/index'
-
-  devise_for :users
   devise_for :admins
-  get 'dashboard/index'
+  devise_for :users
+  devise_for :coaches
 
-  get 'dashboard/show'
+
   root :to => "home#index"
-  get 'home/index'
+  resources :home, :only => [:index]
 
-  resources :teams
-  resources :sports
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :dashboard, :only => [:index, :show]
+
+  resources :tournaments, :only =>[:index]
+
+  resources :sports do
+    resources :teams, :except =>[:index, :show]
+  end
 end

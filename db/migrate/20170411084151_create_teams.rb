@@ -4,7 +4,10 @@ class CreateTeams < ActiveRecord::Migration[5.0]
       t.column :name, :string
       t.column :member, :string
       t.column :points, :integer
-      
+      t.column :win, :integer
+      t.column :loss, :integer
+      t.column :sport_id, :integer
+
       t.timestamps
     end
   end

@@ -1,2 +1,2 @@
-class Tournament < ApplicationRecord
+class Tournament < ActiveRecord::Base
 end

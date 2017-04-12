@@ -1,58 +1,48 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
 
-  # GET /teams
-  def index
-    @teams = Team.all
-  end
-
-  # GET /teams/1
-  def show
-  end
-
-  # GET /teams/new
   def new
-    @team = Team.new
+    @sport = Sport.find(params[:sport_id])
+    @team = @sport.teams.new
   end
 
-  # GET /teams/1/edit
   def edit
+    @sport = Sport.find(params[:sport_id])
+    @team = Team.find(params[:id])
   end
 
-  # POST /teams
   def create
-    @team = Team.new(team_params)
+    @sport = Sport.find(params[:sport_id])
+    @team = @sport.teams.new(team_params)
 
     if @team.save
-      redirect_to @team, notice: 'Team was successfully created.'
+      flash[:notice] = "team successfully created!"
+      redirect_to sport_path(@team.sport)
     else
       render :new
     end
   end
 
-  # PATCH/PUT /teams/1
   def update
-    if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+    @sport = Sport.find(params[:sport_id])
+    @team = Team.find(params[:id])
+    if @sport.teams.update(team_params)
+      flash[:notice] = "team successfully updated!"
+      redirect_to sport_path(@team.sport)
     else
       render :edit
     end
   end
 
-  # DELETE /teams/1
   def destroy
+    @sport = Sport.find(params[:sport_id])
+    @team = Team.find(params[:id])
     @team.destroy
-    redirect_to teams_url, notice: 'Team was successfully destroyed.'
+    flash[:notice] = "team successfully deleted!"
+    redirect_to sport_path(@team.sport)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
     def team_params
-      params.fetch(:team, {})
+      params.require(:team).permit(:name, :points, :win, :loss, :member)
     end
 end

@@ -1,17 +1,16 @@
-<%= form_for(sport) do |f| %>
-  <% if sport.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sport.errors.count, "error") %> prohibited this sport from being saved:</h2>
+<!DOCTYPE html>
+<div class="container-fluid text-center">
 
-      <ul>
-      <% sport.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <%= render 'layouts/errors', :object => @sport %>
+
+    <%= form_for @sport, html: {multipart: true} do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %><br/>
+      <div class="text-center">
+        <%= f.label :image %>
+        <%= f.file_field :image %><br/>
+      </div>
+      <%= f.submit class: "btn btn-large btn-primary"%>
+    <% end %>
+</div>

@@ -9,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="row">
+      <div class="container">
+        <%= render("/layouts/logout")%>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

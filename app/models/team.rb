@@ -1,2 +1,3 @@
-class Team < ApplicationRecord
+class Team < ActiveRecord::Base
+  belongs_to :sport
 end

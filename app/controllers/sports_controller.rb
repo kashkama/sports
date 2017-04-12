@@ -1,58 +1,52 @@
 class SportsController < ApplicationController
-  before_action :set_sport, only: [:show, :edit, :update, :destroy]
+  # before_action :set_sport, only: [:show, :edit, :update, :destroy]
 
-  # GET /sports
   def index
     @sports = Sport.all
   end
 
-  # GET /sports/1
   def show
+    @sport = Sport.find(params[:id])
   end
 
-  # GET /sports/new
   def new
     @sport = Sport.new
   end
 
-  # GET /sports/1/edit
   def edit
+    @sport = Sport.find(params[:id])
   end
 
-  # POST /sports
   def create
     @sport = Sport.new(sport_params)
 
     if @sport.save
-      redirect_to @sport, notice: 'Sport was successfully created.'
+      flash[:notice] = "sport successfully created!"
+      redirect_to sports_path
     else
       render :new
     end
   end
 
-  # PATCH/PUT /sports/1
   def update
+    @sport = Sport.find(params[:id])
     if @sport.update(sport_params)
-      redirect_to @sport, notice: 'Sport was successfully updated.'
+      flash[:notice] = "sport successfully updated!"
+      redirect_to sports_path
     else
       render :edit
     end
   end
 
-  # DELETE /sports/1
   def destroy
+    @sport = Sport.find(params[:id])
     @sport.destroy
-    redirect_to sports_url, notice: 'Sport was successfully destroyed.'
+    flash[:notice] = "sport successfully deleted!"
+    redirect_to sports_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sport
-      @sport = Sport.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
     def sport_params
-      params.fetch(:sport, {})
+      params.require(:sport).permit(:name, :image)
     end
 end
