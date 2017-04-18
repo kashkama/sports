@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<div class="container text-center">
+
+  <%= render "layouts/errors", :object => @tournament %>
+
+  <%= form_for @tournament do |f| %>
+    <%= f.label :team1 %>
+    <%= f.text_field :team1 %><br/><br/>
+    <%= f.label :team2 %>
+    <%= f.text_field :team2 %><br/><br/>
+    <%= f.label :date %>
+    <%= f.text_field :date%><br/><br/>
+    <%= f.submit class: "btn btn-large btn-primary"%>
+  <% end %>
+</div>

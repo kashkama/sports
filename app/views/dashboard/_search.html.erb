@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- search for teams -->
+<div class="text-center">
+  <%= form_tag(dashboard_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search teams"%>
+      <%= submit_tag "Search", :name => nil%>
+  <% end %>
+
+</div>
+<div class="row">
+  <% if @team.blank? %>
+  <!-- <h4>There are no team containing the term <%= params[:search] %>.</h4> -->
+<% end %>
+</div>

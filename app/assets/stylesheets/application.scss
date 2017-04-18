@@ -20,3 +20,16 @@
   @import "sports.scss";
   @import "teams.scss";
   @import "tournaments.scss";
+
+
+  html {
+      overflow: scroll;;
+      // height: 100%;
+  }
+ul{
+  list-style: none;
+  text-decoration: none;
+}
+.navbar {
+  margin-bottom: 0px;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<div class="container-fluid">
+
+  <table align="center">
+    <tr>
+      <th class="th-team-column"><%= link_to "Team"%></th>
+      <th class="th-team-column"><%= link_to "vs Team"%></th>
+      <th class="th-team-column"><%= link_to "Date"%></th>
+
+    </tr>
+
+    <% for tournament in @tournaments do%>
+    <tr>
+      <td class="tournament-column"><%= tournament.team1%></td>
+      <td class="tournament-column"><%= tournament.team2%></td>
+      <td class="tournament-column"><%= tournament.date%></td>
+
+    </tr>
+    <%end%>
+  </table>
+</div>

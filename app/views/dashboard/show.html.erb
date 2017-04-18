@@ -1,2 +1,18 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<!DOCTYPE html>
+
+<div class="container">
+  <div class="row">
+    <h2><%= @sport.name%></h2><hr/>
+  </div>
+  <div class="row">
+    <!-- search -->
+    <%= render("dashboard/search")%>
+    <% if @teams.blank? %>
+  <h4>There are no teams containing the term <%= params[:search] %>.</h4>
+<% end %>
+  </div>
+  <div class="row">
+    <!-- teams -->
+    <%= render("/dashboard/teams")%>
+  </div>
+</div>

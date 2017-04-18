@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- teams row rendered in dashboard index -->
+<div class="container">
+  <div class="row">
+
+    <h3 class="text-center">Teams</h3>
+    <% if @sport.teams.any?%>
+    <ul>
+      <% @sport.teams.each do |team|%>
+      <div class="col-sm-4">
+        <li><%= team.name%></li>
+        <li><%= image_tag team.image.url(:medium) %></li>
+        <li>players: <%= team.members%></li>
+        <li><%= team.points %> points</li>
+        <li><%= team.win %> wins</li>
+        <li><%= team.loss %> losses</li>
+        <li><button class="btn btn-success"<%= link_to "JOIN"%></button></li><hr/>
+      </div>
+      <%end%>
+    </ul>
+    <%else%>
+      <p>More teams to be Available soon!</p>
+    <%end%>
+  </div>
+
+  <div class="row">
+    <%= link_to "Dashboard", dashboard_index_path%>
+  </div>
+</div>

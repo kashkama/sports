@@ -1,5 +1,19 @@
 <!DOCTYPE html>
-<div class="container">
+<div class="container dashboard">
   <h1>Dashboard</h1>
   <p></p>
+  <div class="row">
+    <h3>sports</h3>
+    <h4>choose a sport to register to a team</h4>
+    <ul>
+      <% @sports.each() do |sport|%>
+      <div class="col-sm-6 sport">
+        <div class="text-center">
+        <li><%= image_tag sport.image.url(:medium) %> <%= link_to sport.name, dashboard_path(sport), class:"btn btn-success"%></li>
+      </div>
+      </div>
+      <%end%>
+    </ul>
+    </ul>
+  </div>
 </div>

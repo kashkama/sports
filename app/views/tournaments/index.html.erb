@@ -1,2 +1,13 @@
-<h1>Tournaments#index</h1>
-<p>Find me in app/views/tournaments/index.html.erb</p>
+<!DOCTYPE html>
+<div class="container">
+  <br/><br/>
+  <div class="row">
+    Tournaments for all sports
+  </div>
+  <div class="row">
+    <%= render("tournaments/tournaments")%>
+  </div>
+  <div class="row text-center">
+    <%= link_to "New Tourna", new_tournament_path%>
+  </div>
+</div>

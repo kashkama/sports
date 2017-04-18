@@ -1,8 +1,8 @@
 <!DOCTYPE html>
   <% if admin_signed_in? %>
-   <p>Hello, <%= current_admin.name%>- <%= link_to "sign_out", destroy_admin_session_path, :method => "delete"%><hr/></p>
+   <p>Hello, <%= current_admin.name%>- <%= link_to "sign_out", destroy_admin_session_path, class:"btn", :method => "delete"%><hr/></p>
   <% elsif user_signed_in?%>
-   <p>Hello, <%= current_user.name%>- <%= link_to "sign_out", destroy_user_session_path, :method => "delete"%><hr/></p>
+   <p>Hello, <%= current_user.name%>- <%= link_to "sign_out", destroy_user_session_path,  class:"btn", :method => "delete"%><hr/></p>
   <% elsif coach_signed_in?%>
-  <p>Hello, <%= current_coach.name%>- <%= link_to "sign_out", destroy_coach_session_path, :method => "delete"%><hr/></p>
+  <p>Hello, <%= current_coach.name%>- <%= link_to "sign_out", destroy_coach_session_path,  class:"btn", :method => "delete"%><hr/></p>
   <%end%>

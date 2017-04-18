@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, :only => [:index, :show]
 
-  resources :tournaments, :only =>[:index]
+  resources :tournaments, :except => [:show]
 
   resources :sports do
     resources :teams, :except =>[:index, :show]
